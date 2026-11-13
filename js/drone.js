@@ -1,5 +1,5 @@
 class Drone {
-    costructor(name, colour, pos, vel) {
+    constructor(name, colour, pos, vel) {
         this.name = name;
         this.colour = colour;
         this.pos = pos;
