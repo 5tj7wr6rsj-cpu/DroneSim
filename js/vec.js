@@ -32,7 +32,7 @@ function scale(a, k) {
 
 function dotP(a, b) {
     return(
-        (a.x * b.x) + (a.y * a.y) + (a.z * a.z)
+        (a.x * b.x) + (a.y * b.y) + (a.z * b.z)
     )
 }
 
