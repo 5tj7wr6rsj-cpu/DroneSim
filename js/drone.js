@@ -13,5 +13,8 @@ class Drone {
         if (this.stepCount % 10 === 0) {
             this.trail.push(this.pos);
         }
+        else {
+            ;
+        }
     }
 }
