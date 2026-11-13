@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
         <title>
-            Drome Sim
+            Drone Sim
         </title>
     </head>
     <body>
-        <canvas id="Canvas" width="1000" height="100">
+        <canvas id="Canvas" width="1000" height="700">
         </canvas>
         <div>
-            <button>
-                <Play><Pause></Pause>
+            <button id="playBtn">
+                Play
             </button>
         </div>
         <div>
-            <button>
-                <Reset></Reset>
+            <button id="resetBtn">
+                Reset
             </button>
         </div>
-        <script src="vec.js" defer></script>
-        <script src="drone.js" defer></script>
-        <script src="render.js" defer></script>
-        <script src="main.js" defer></script>
+        <script src="js/vec.js" defer></script>
+        <script src="js/drone.js" defer></script>
+        <script src="js/render.js" defer></script>
+        <script src="js/main.js" defer></script>
     </body>
 </html>
