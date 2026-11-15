@@ -12,17 +12,31 @@ function worldToScreen(p) {
     }
 }
 
-
-function drawDrone {
+function drawDrone(drones) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (const d of drones) {
         ctx.beginPath();
-        let Start = worldToScreen(d.trail[0]);
-        ctx.moveTo(Start.x, Start.y);
+        let start = worldToScreen(d.trail[0]);
+        ctx.moveTo(start.x, start.y);
 
         for (let i = 1; i < d.trail.length; i++) {
-            
+            let pos = worldToScreen(d.trail[i]);
+            ctx.lineTo(pos.x, pos.y);
         }
+
+        let now = worldToScreen(d.pos);
+        ctx.lineTo(now.x, now.y);
+
+        ctx.strokeStyle = d.colour;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(now.x, now.y, 6, 0, 2 * Math.PI);
+
+        ctx.fillStyle = d.colour;
+        ctx.fill();
+
+        ctx.fillText(d.name, now.x + 10, now.y - 10);
     }
 }
