@@ -17,7 +17,8 @@ const scenario = {
     drones: [
         { name: "Target", colour: "red", pos: vec(-300, 100, 0), vel: vec(50, 0, 0) },
         { name: "Interceptor", colour: "blue", pos: vec(-300, -200, 0), vel: vec(60, 40, 0) }
-    ]
+    ],
+    duration: 20,
 };
 
 function loadScenario(s) {
@@ -73,6 +74,11 @@ function loop(now) {
         while (accumulator >= DT) {
             step(DT);
             accumulator -= DT;
+        }
+
+        if (simTime >= scenario.duration) {
+            running = false;
+            play.textContent = "Play";
         }
     }
 
