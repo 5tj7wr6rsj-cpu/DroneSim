@@ -1,6 +1,6 @@
 const DT = 1 / 120;      
 let timeScale = 1;   
-let running = true;   
+let running = false;   
 let accumulator = 0;  
 let lastTime = null;  
 let simTime = 0;   
