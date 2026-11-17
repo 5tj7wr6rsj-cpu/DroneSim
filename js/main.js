@@ -6,6 +6,9 @@ let lastTime = null;
 let simTime = 0;   
 let drones = [];     
 
+const play = document.getElementById("playBtn");
+const reset = document.getElementById("resetBtn");
+
 const scenario = {
     drones: [
         { name: "Target", colour: "red", pos: vec(-300, 100, 0), vel: vec(50, 0, 0) },
@@ -29,6 +32,20 @@ function step(dt) {
     }
     simTime += dt;
 }
+
+play.addEventListener("click", function () {
+    running = !running;
+    if (running === true) {
+        play.textContent = "Pause";
+    }
+    else {
+        play.textContent = "Play";
+    }
+});
+
+reset.addEventListener("click", function () {
+    loadScenario(scenario);
+});
 
 function loop(now) {
     if (lastTime === null) {
