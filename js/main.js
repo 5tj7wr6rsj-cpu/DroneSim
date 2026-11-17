@@ -1,10 +1,14 @@
-const DT = 1 / 120;      
-let timeScale = 1;   
-let running = false;   
-let accumulator = 0;  
-let lastTime = null;  
-let simTime = 0;   
-let drones = [];     
+const DT = 1 / 120;
+let timeScale = 1;
+let running = false;
+let accumulator = 0;
+let lastTime = null;
+let simTime = 0;
+let drones = [];
+let dist = 0;
+let minDist = Infinity;
+let tmin = 0;
+
 
 const play = document.getElementById("playBtn");
 const reset = document.getElementById("resetBtn");
@@ -24,6 +28,9 @@ function loadScenario(s) {
     }
     simTime = 0;
     accumulator = 0;
+    dist = 0;
+    minDist = Infinity;
+    tmin = 0;
 }
 
 function step(dt) {
@@ -31,6 +38,11 @@ function step(dt) {
         d.update(dt);
     }
     simTime += dt;
+    dist = mag(subt(drones[0].pos, drones[1].pos));
+    if (dist < minDist) {
+        minDist = dist;
+        tmin = simTime;
+    }
 }
 
 play.addEventListener("click", function () {
@@ -65,6 +77,7 @@ function loop(now) {
     }
 
     drawDrone(drones);
+    drawHUD(simTime, dist, minDist, tmin);
     requestAnimationFrame(loop);
 }
 
